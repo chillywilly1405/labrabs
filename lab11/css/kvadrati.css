@@ -1,0 +1,10 @@
+.square {
+    width: 120px;
+    height: 120px;
+    background: #00008B;
+    margin-left: 10px;
+}
+
+body {
+    display: flex;
+}
