@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Пример 17 - Дерево списков</title>
+</head>
+
+<body>
+
+    <script>
+        function createUL(obj) {
+            if (!Object.keys(obj).length) {
+                console.log(Object.keys(obj).length)
+                return
+            }
+            let ul = document.createElement('ul')
+            for (let key in obj) {
+                let li = document.createElement('li')
+                if (!isNaN(obj[key]))
+                    li.textContent = key + obj[key]
+                else
+                    li.textContent = key
+                let childrenUL = createUL(obj[key])
+                if (childrenUL) {
+                    li.append(childrenUL)
+                }
+                ul.append(li)
+            }
+            return ul
+        }
+
+        function createTree(container, obj) {
+            document.querySelector(container).append(createUL(obj))
+        }
+        let data = {
+            "Велосипеды": {
+                "взрослые": 5,
+                "детские": 3
+            },
+            "Автомобили": {
+                "настоящие": {
+                    "бмв": 2,
+                    "ауди": 4
+                },
+                "игрушечные": {
+                    "хотвиллс": 6,
+                    "нфс": 2
+                }
+            }
+        }
+        createTree('body', data)
+    </script>
+</body>
+
+</html>
